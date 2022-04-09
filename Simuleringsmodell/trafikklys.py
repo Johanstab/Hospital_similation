@@ -24,6 +24,14 @@ class TrafikkLys:
 
         self.pasient_liste = []
 
+    def initer_pasienter(self, pasient_liste):
+
+        for pasient in pasient_liste:
+            self.pasient_liste.append(Pasient(pasient['PasNr'], pasient['DiagnoseGruppe'],
+                                              pasient['Fagområde'], pasient['OprType'],
+                                              pasient['Måned'], pasient['Ukedag'],
+                                              pasient['TidsIntervallStue']))
+
 
 class Red(TrafikkLys):
     parametere = {'min_tid': 0,

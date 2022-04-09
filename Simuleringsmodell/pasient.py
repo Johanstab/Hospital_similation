@@ -6,7 +6,7 @@ __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
 class Pasient:
 
-    def __init__(self, PasientNr, Diagnose, Tidspunkt, Operasjonstype, TidOperasjon):
+    def __init__(self, PasientNr, Diagnose, FagOmrade, Operasjonstype, Month, Ukedag, TidOperasjon):
 
         """
 
@@ -19,8 +19,10 @@ class Pasient:
 
         self.pasientNr = PasientNr
         self.diagnose = Diagnose
-        self.tidspunkt = Tidspunkt
+        self.fagOmrade = FagOmrade
         self.operasjonstype = Operasjonstype
+        self.month = Month
+        self.ukedag = Ukedag
         self.tidOperasjon = TidOperasjon
         self.ventetid = 0
 

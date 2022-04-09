@@ -6,13 +6,26 @@ __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
 class Stue:
 
-    def __init__(self, StueNr, Status):
+    parametere = {}
 
-        """
+    @classmethod
+    def sett_parametere(cls, nye_parametere):
+        for parameter in nye_parametere:
+            if parameter not in cls.parametere:
+                    raise KeyError('Parameteren eksisterer ikke:' + nye_parametere[0])
 
-        :param StueNr:
-        :param Status:
-        """
+    def __init__(self):
 
-        self.stueNr = StueNr
-        self.status = Status
+        self.stuer = []
+
+
+class OrtoStue(Stue):
+
+    def __init__(self):
+        super().__init__()
+
+
+class RestStue(Stue):
+
+    def __init__(self):
+        super().__init__()
