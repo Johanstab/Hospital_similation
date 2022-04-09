@@ -3,18 +3,48 @@
 __author__ = 'Johan Stabekk, Sabina Langås'
 __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
+from .pasient import Pasient
+
 
 class TrafikkLys:
+    """Superklasse for trafikklysene"""
 
-    def __init__(self, RedTid, YellowTid, GreenTid ):
+    parametere = {}
 
-        """
+    @classmethod
+    def sett_parametere(cls, nye_parametere):
 
-        :param RedTid:
-        :param YellowTid:
-        :param GreenTid:
-        """
+        for parameter in nye_parametere:
+            if parameter not in cls.parametere:
+                raise KeyError('Paramteren eksisterer ikke: ' + nye_parametere[0])
 
-        self.red = RedTid
-        self.yellow = YellowTid
-        self.green = GreenTid
+        cls.parametere.update(nye_parametere)
+
+    def __init__(self):
+
+        self.pasient_liste = []
+
+
+class Red(TrafikkLys):
+    parametere = {'min_tid': 0,
+                  'maks_tid': 360}
+
+    def __init__(self):
+        super().__init__()
+
+
+class Yellow(TrafikkLys):
+    parametere = {'min_tid': 361,
+                  'maks_tid': 1440}
+
+    def __init__(self):
+        super().__init__()
+
+
+class Green(TrafikkLys):
+    parametere = {'min_tid': 1441,
+                  'maks_tid': 14400}
+
+    def __init__(self):
+        super().__init__()
+
