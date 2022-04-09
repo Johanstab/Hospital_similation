@@ -24,13 +24,13 @@ class TrafikkLys:
 
         self.pasient_liste = []
 
-    def initer_pasienter(self, pasient_liste):
+    def initer_pasienter(self, pasient_df):
 
-        for pasient in pasient_liste:
-            self.pasient_liste.append(Pasient(pasient['PasNr'], pasient['DiagnoseGruppe'],
-                                              pasient['Fagområde'], pasient['OprType'],
-                                              pasient['Måned'], pasient['Ukedag'],
-                                              pasient['TidsIntervallStue']))
+        for index, row in pasient_df.iterrows():
+            self.pasient_liste.append(Pasient(row['PasNr'], row['DiagnoseGruppe'],
+                                              row['Fagområde'], row['OprType'],
+                                              row['Måned'], row['Ukedag'],
+                                              row['TidsIntervallStue']))
 
 
 class Red(TrafikkLys):
