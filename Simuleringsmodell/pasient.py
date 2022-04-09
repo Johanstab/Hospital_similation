@@ -1,12 +1,21 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'Johan Stabekk, Sabina Langås'
-__email__ = 'johan.stabekk@nmbu.no, sabina.langaas@nmbu.no'
+__email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
 
 class Pasient:
 
     def __init__(self, PasientNr, Diagnose, Tidspunkt, Operasjonstype, TidOperasjon):
+
+        """
+
+        :param PasientNr:
+        :param Diagnose:
+        :param Tidspunkt:
+        :param Operasjonstype:
+        :param TidOperasjon:
+        """
 
         self.pasientNr = PasientNr
         self.diagnose = Diagnose
