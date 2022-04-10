@@ -15,5 +15,4 @@ class HospitalSim:
     def __init__(self, df):
         self.stue = Stue
 
-        for pasient in df:
 

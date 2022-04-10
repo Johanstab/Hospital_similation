@@ -38,11 +38,23 @@ class Stue:
 
 class OrtoStue(Stue):
 
+    parametere = {'Dag': 4,
+                  'Tidlig kveld': 3,
+                  'Kveld': 2}
+
+    fagomrade = ['Ortopedi']
+
     def __init__(self):
         super().__init__()
 
 
 class RestStue(Stue):
+
+    parametere = {'Dag': 5,
+                  'Tidlig kveld': 4,
+                  'Kveld': 3}
+
+    fagomrade = ['Gynekologi', 'Gastrokirurgi']
 
     def __init__(self):
         super().__init__()
