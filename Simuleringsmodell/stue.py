@@ -3,6 +3,7 @@
 __author__ = 'Johan Stabekk, Sabina Langås'
 __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
+from .trafikklys import Red, Yellow, Green
 
 class Stue:
 
@@ -17,6 +18,22 @@ class Stue:
     def __init__(self):
 
         self.stuer = []
+
+    def fordel_trafikklys(self, pasient_liste, Diagnose_df):
+
+        for pasient in pasient_liste:
+            for index, row in Diagnose_df.iterrows():
+                if pasient.diagnose == row['DiagnoseGruppe'] and row['Hastegrad'] == 'Rød':
+                    pasient.trafikklys = Red
+                    break
+                elif pasient.diagnose == row['DiagnoseGruppe'] and row['Hastegrad'] == 'Gul':
+                    pasient.trafikklys = Yellow
+                    break
+                elif pasient.diagnose == row['DiagnoseGruppe'] and row['Hastegrad'] == 'Grønn':
+                    pasient.trafikklys = Green
+                    break
+                else:
+                    continue
 
 
 class OrtoStue(Stue):

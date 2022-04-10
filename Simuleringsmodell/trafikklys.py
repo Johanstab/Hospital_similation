@@ -30,7 +30,8 @@ class TrafikkLys:
             self.pasient_liste.append(Pasient(row['PasNr'], row['DiagnoseGruppe'],
                                               row['Fagområde'], row['OprType'],
                                               row['Måned'], row['Ukedag'],
-                                              row['TidsIntervallStue']))
+                                              row['TidsIntervallStue'], row['StueTidMin'],
+                                              row['ErØhjelp']))
 
 
 class Red(TrafikkLys):
