@@ -5,6 +5,7 @@ __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
 from .trafikklys import Red, Yellow, Green
 
+
 class Stue:
 
     parametere = {}
@@ -13,7 +14,7 @@ class Stue:
     def sett_parametere(cls, nye_parametere):
         for parameter in nye_parametere:
             if parameter not in cls.parametere:
-                    raise KeyError('Parameteren eksisterer ikke:' + nye_parametere[0])
+                raise KeyError('Parameteren eksisterer ikke:' + nye_parametere[0])
 
     def __init__(self):
 
@@ -34,6 +35,13 @@ class Stue:
                     break
                 else:
                     continue
+
+    def kalk_elektiv(self, df):
+        elektiv = df[df['ErØhjelp'] != 'ø-hjelp']
+        tid = elektiv[['Måned', 'Ukedag', 'TidsIntervallStue', 'StueTid', 'Stue']]
+        tid_df = tid.groupby(['Stue', 'Måned', 'Ukedag', 'TidsIntervallStue'])
+
+        return tid_df
 
 
 class OrtoStue(Stue):
@@ -58,3 +66,8 @@ class RestStue(Stue):
 
     def __init__(self):
         super().__init__()
+
+
+if __name__ == '__main__':
+    stue = Stue()
+    stue.kalk_elektiv()
