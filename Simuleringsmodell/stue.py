@@ -3,6 +3,8 @@
 __author__ = 'Johan Stabekk, Sabina Langås'
 __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
+import pandas as pd
+
 from .trafikklys import Red, Yellow, Green
 
 
@@ -17,7 +19,6 @@ class Stue:
                 raise KeyError('Parameteren eksisterer ikke:' + nye_parametere[0])
 
     def __init__(self):
-
         self.stuer = []
 
     def fordel_trafikklys(self, pasient_liste, Diagnose_df):
@@ -37,15 +38,20 @@ class Stue:
                     continue
 
     def kalk_elektiv(self, df):
-        elektiv = df[df['ErØhjelp'] != 'ø-hjelp']
-        tid = elektiv[['Måned', 'Ukedag', 'TidsIntervallStue', 'StueTid', 'Stue']]
-        tid_df = tid.groupby(['Stue', 'Måned', 'Ukedag', 'TidsIntervallStue'])
 
-        return tid_df
+        elektiv = df[df['ErØhjelp'] != 'ø-hjelp']
+        ufiltrert_tid = elektiv[['Måned', 'Ukedag', 'TidsIntervallStue', 'StueTidMin', 'Stue']]
+        filtrert_tid = ufiltrert_tid[ufiltrert_tid['Stue'].str.contains('N-08|N-09|N-11|N-14|N-15') == False]
+
+        elektiv_tid = filtrert_tid.groupby(['Måned', 'Ukedag', 'TidsIntervallStue', 'Stue'])['StueTidMin'].sum()
+        antall_elektiv = filtrert_tid.groupby(['Måned', 'Ukedag', 'TidsIntervallStue', 'Stue'])['StueTidMin'].count()
+
+        df_to_use = elektiv_tid.to_frame().join(antall_elektiv, lsuffix='_caller', rsuffix='_other')
+
+        return elektiv_tid, df_to_use
 
 
 class OrtoStue(Stue):
-
     parametere = {'Dag': 4,
                   'Tidlig kveld': 3,
                   'Kveld': 2}
@@ -70,4 +76,4 @@ class RestStue(Stue):
 
 if __name__ == '__main__':
     stue = Stue()
-    stue.kalk_elektiv()
+    elektiv_df = stue.kalk_elektiv(pd.read_excel('RIKTIG FIL')) # Må legge til filepath
