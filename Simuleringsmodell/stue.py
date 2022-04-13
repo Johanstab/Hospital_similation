@@ -5,7 +5,7 @@ __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
 import pandas as pd
 
-from .trafikklys import Red, Yellow, Green
+from trafikklys import Red, Yellow, Green
 
 
 class Stue:
@@ -76,4 +76,5 @@ class RestStue(Stue):
 
 if __name__ == '__main__':
     stue = Stue()
-    elektiv_df = stue.kalk_elektiv(pd.read_excel('RIKTIG FIL')) # Må legge til filepath
+    elektiv_df = stue.kalk_elektiv(pd.read_excel('')) # Må legge til filepath
+

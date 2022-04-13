@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="150ebf8f-5436-41e2-8119-c978c0f093b9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Hospital_similation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Hospital_similation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simuleringsmodell/stue.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simuleringsmodell/stue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/trafikklys.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simuleringsmodell/trafikklys.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,28 +38,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="27YUsQHp1zsED1p8G2PqlGbqjBY" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../INF200/June_block/BioSim_G13_Johan_Sabina" />
+    <property name="last_opened_file_path" value="$USER_HOME$/INF200/June_block/BioSim_G13_Johan_Sabina" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.try_sim">
-    <configuration name="stue" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.stue">
+    <configuration name="stue" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Hospital_similation" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -103,8 +93,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.try_sim" />
         <item itemvalue="Python.stue" />
+        <item itemvalue="Python.try_sim" />
       </list>
     </recent_temporary>
   </component>
@@ -119,8 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1649496719007</updated>
       <workItem from="1649496720095" duration="13500000" />
-      <workItem from="1649575831503" duration="13928000" />
-      <workItem from="1649850746661" duration="8686000" />
+      <workItem from="1649575831503" duration="3650000" />
     </task>
     <servers />
   </component>
@@ -132,13 +121,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -148,7 +136,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Hospital_similation$try_sim.coverage" NAME="try_sim Coverage Results" MODIFIED="1649851141841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Hospital_similation$stue.coverage" NAME="stue Coverage Results" MODIFIED="1649851116945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$stue.coverage" NAME="stue Coverage Results" MODIFIED="1649862816644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$try_sim.coverage" NAME="try_sim Coverage Results" MODIFIED="1649579440485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
