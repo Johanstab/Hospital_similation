@@ -3,7 +3,7 @@
 __author__ = 'Johan Stabekk, Sabina Langås'
 __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
-from pasient import Pasient
+from .pasient import Pasient
 
 
 class TrafikkLys:
