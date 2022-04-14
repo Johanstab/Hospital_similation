@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/Simuleringsmodell/stue.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simuleringsmodell/stue.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simuleringsmodell/trafikklys.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simuleringsmodell/trafikklys.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +46,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/INF200/June_block/BioSim_G13_Johan_Sabina" />
     <property name="settings.editor.selected.configurable" value="terminal" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Python.stue">
     <configuration name="stue" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -110,6 +123,7 @@
       <updated>1649496719007</updated>
       <workItem from="1649496720095" duration="13500000" />
       <workItem from="1649575831503" duration="3650000" />
+      <workItem from="1649917519660" duration="5422000" />
     </task>
     <servers />
   </component>
@@ -121,12 +135,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -136,7 +151,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Hospital_similation$stue.coverage" NAME="stue Coverage Results" MODIFIED="1649862816644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
     <SUITE FILE_PATH="coverage/Hospital_similation$try_sim.coverage" NAME="try_sim Coverage Results" MODIFIED="1649579440485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$stue.coverage" NAME="stue Coverage Results" MODIFIED="1649918414647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
   </component>
 </project>

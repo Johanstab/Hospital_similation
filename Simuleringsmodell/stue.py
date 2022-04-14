@@ -5,7 +5,7 @@ __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
 import pandas as pd
 
-from trafikklys import Red, Yellow, Green
+from .trafikklys import Red, Yellow, Green
 
 
 class Stue:
@@ -39,16 +39,32 @@ class Stue:
 
     def kalk_elektiv(self, df):
 
-        elektiv = df[df['ErØhjelp'] != 'ø-hjelp']
+        """Funksjonen konverterer dataframen som kommer in til en ny dataframe som har filtrert ut
+        den elektive
+
+        :param df:
+        :return df_to_use: Ny df med mengde tid brukt i måneden per ukedag + skift + stue
+        """
+
+        # elektiv = df[df['ErØhjelp'] != 'ø-hjelp']
+        elektiv = df
+        elektiv.loc[elektiv['ErØhjelp'] == 'ø-hjelp', 'StueTidMin'] = None
         ufiltrert_tid = elektiv[['Måned', 'Ukedag', 'TidsIntervallStue', 'StueTidMin', 'Stue']]
         filtrert_tid = ufiltrert_tid[ufiltrert_tid['Stue'].str.contains('N-08|N-09|N-11|N-14|N-15') == False]
 
-        elektiv_tid = filtrert_tid.groupby(['Måned', 'Ukedag', 'TidsIntervallStue', 'Stue'])['StueTidMin'].sum()
-        antall_elektiv = filtrert_tid.groupby(['Måned', 'Ukedag', 'TidsIntervallStue', 'Stue'])['StueTidMin'].count()
+        elektiv_tid = filtrert_tid.groupby(['Måned', 'Ukedag', 'TidsIntervallStue', 'Stue'],
+                                           dropna=False)['StueTidMin'].sum()
+        antall_elektiv = filtrert_tid.groupby(['Måned', 'Ukedag', 'TidsIntervallStue', 'Stue'],
+                                              dropna=False)['StueTidMin'].count()
+        # tid_ohjelp = filtrert_tid.groupby(['Måned', 'Ukedag', 'TidsIntervallStue'])['StueTidMin'].sum()
 
         df_to_use = elektiv_tid.to_frame().join(antall_elektiv, lsuffix='_caller', rsuffix='_other')
 
-        return elektiv_tid, df_to_use
+        return df_to_use
+
+    def lag_fordelingsstruktur(self):
+
+        pass
 
 
 class OrtoStue(Stue):
@@ -76,5 +92,5 @@ class RestStue(Stue):
 
 if __name__ == '__main__':
     stue = Stue()
-    elektiv_df = stue.kalk_elektiv(pd.read_excel('')) # Må legge til filepath
-
+    org_df = pd.read_excel('C:/Users/Eier/Documents/Master 2022/data/DATA JOBBE MED/NBH SOP MED KODER 2019.xlsx')
+    elektiv_df, df, ohjelp = stue.kalk_elektiv(org_df) # Må legge til filepath
