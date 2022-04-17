@@ -8,7 +8,7 @@ import pandas as pd
 from trafikklys import Red, Yellow, Green
 
 
-class Stue:
+class Sykehus:
 
     parametere = {}
 
@@ -26,32 +26,45 @@ class Stue:
         for pasient in pasient_liste:
             for index, row in Diagnose_df.iterrows():
                 if pasient.diagnose == row['DiagnoseGruppe'] and row['Hastegrad'] == 'Rød':
-                    pasient.trafikklys = Red
+                    pasient.hast= 'Red'
                     break
                 elif pasient.diagnose == row['DiagnoseGruppe'] and row['Hastegrad'] == 'Gul':
-                    pasient.trafikklys = Yellow
+                    pasient.hast = 'Yellow'
                     break
                 elif pasient.diagnose == row['DiagnoseGruppe'] and row['Hastegrad'] == 'Grønn':
-                    pasient.trafikklys = Green
+                    pasient.hast = 'Green'
                     break
                 else:
                     continue
 
+    def fikser_dager(self, pasient_liste):
+
+        for pasient in pasient_liste:
+            if pasient.tid == 'Dag':
+                pasient.tid = 1
+            elif pasient.tid == 'Tidlig Kveld':
+                pasient.tid = 2
+            elif pasient.tid == 'Kveld':
+                pasient.tid = 3
+            elif pasient.tid == 'Natt':
+                pasient.tid = 4
+
     def kalk_elektiv(self, df):
 
         elektiv = df[df['ErØhjelp'] != 'ø-hjelp']
-        ufiltrert_tid = elektiv[['Måned', 'Ukedag', 'TidsIntervallStue', 'StueTidMin', 'Stue']]
-        filtrert_tid = ufiltrert_tid[ufiltrert_tid['Stue'].str.contains('N-08|N-09|N-11|N-14|N-15') == False]
+        ufiltrert_tid = elektiv[['Måned', 'Ukedag', 'TidsIntervallStue', 'StueTidMin']]
+        #filtrert_tid = ufiltrert_tid[ufiltrert_tid['Stue'].str.contains('N-08|N-09|N-11|N-14|N-15') == False]
 
-        elektiv_tid = filtrert_tid.groupby(['Måned', 'Ukedag', 'TidsIntervallStue', 'Stue'])['StueTidMin'].sum()
-        antall_elektiv = filtrert_tid.groupby(['Måned', 'Ukedag', 'TidsIntervallStue', 'Stue'])['StueTidMin'].count()
+        elektiv_tid = ufiltrert_tid.groupby(['Måned', 'Ukedag', 'TidsIntervallStue'])['StueTidMin'].sum()
+        antall_elektiv = ufiltrert_tid.groupby(['Måned', 'Ukedag', 'TidsIntervallStue'])['StueTidMin'].count()
 
         df_to_use = elektiv_tid.to_frame().join(antall_elektiv, lsuffix='_caller', rsuffix='_other')
 
         return elektiv_tid, df_to_use
 
 
-class OrtoStue(Stue):
+
+class OrtoStue(Sykehus):
     parametere = {'Dag': 4,
                   'Tidlig kveld': 3,
                   'Kveld': 2}
@@ -62,7 +75,7 @@ class OrtoStue(Stue):
         super().__init__()
 
 
-class RestStue(Stue):
+class RestStue(Sykehus):
 
     parametere = {'Dag': 5,
                   'Tidlig kveld': 4,
@@ -75,6 +88,14 @@ class RestStue(Stue):
 
 
 if __name__ == '__main__':
-    stue = Stue()
-    elektiv_df = stue.kalk_elektiv(pd.read_excel('')) # Må legge til filepath
+    stue = Sykehus()
+    stue1 = RestStue()
+    elektiv_df = stue.kalk_elektiv(pd.read_excel('/Users/sabinal/Desktop/MASTER 2022/DATA/Python '
+                                                 'kode/Data NBH SOP 2019 Koder & Trafikklys '
+                                                 '1.xls')) # Må legge til filepath
+
+    print(elektiv_df[1])
+
+
+
 

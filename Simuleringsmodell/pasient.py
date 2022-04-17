@@ -8,7 +8,6 @@ class Pasient:
 
     def __init__(self, PasientNr, Diagnose, FagOmrade, Operasjonstype, Month, Ukedag, TidOperasjon,
                  Stuetid, ErOhjelp):
-
         """
 
         :param PasientNr:
@@ -24,11 +23,14 @@ class Pasient:
         self.operasjonstype = Operasjonstype
         self.month = Month
         self.ukedag = Ukedag
-        self.tidOperasjon = TidOperasjon
+        self.tid = TidOperasjon
         self.erohjelp = ErOhjelp
         self.stuetid = Stuetid
-        self.trafikklys = None
+        self.hast = None
         self.ventetid = 0
+        self.nummer = None
+        self.inntid = 0
+
 
     def oppdatere_ventetid(self, tid):
         self.ventetid = tid

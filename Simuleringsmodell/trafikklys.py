@@ -29,8 +29,8 @@ class TrafikkLys:
         for index, row in pasient_df.iterrows():
             self.pasient_liste.append(Pasient(row['PasNr'], row['DiagnoseGruppe'],
                                               row['Fagområde'], row['OprType'],
-                                              row['Måned'], row['Ukedag'],
-                                              row['TidsIntervallStue'], row['StueTidMin'],
+                                              row['Måned'], row['AnnkomstDag'],
+                                              row['AnnkomstTidspunkt'], row['StueTidMin'],
                                               row['ErØhjelp']))
 
 

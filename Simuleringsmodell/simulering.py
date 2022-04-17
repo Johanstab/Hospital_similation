@@ -5,9 +5,9 @@ __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
 import pandas as pd
 
-from .pasient import Pasient
-from .stue import Stue
-from .trafikklys import TrafikkLys
+from pasient import Pasient
+from stue import Stue
+from trafikklys import TrafikkLys
 
 
 class HospitalSim:
