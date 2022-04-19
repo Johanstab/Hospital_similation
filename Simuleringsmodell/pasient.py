@@ -30,7 +30,8 @@ class Pasient:
         self.ventetid = 0
         self.nummer = None
         self.inntid = 0
+        self.hast_nummer = 0
 
 
-    def oppdatere_ventetid(self, tid):
-        self.ventetid = tid
+
+

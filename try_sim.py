@@ -6,7 +6,7 @@ __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 import pandas as pd
 
 from Simuleringsmodell.trafikklys import TrafikkLys
-from Simuleringsmodell.stue import Stue
+from Simuleringsmodell.sykehus import Stue
 
 if __name__ == '__main__':
     df = pd.read_excel("C:/Users/Eier/Documents/Master 2022/data/DATA JOBBE MED/NBH SOP MED KODER 2019.xlsx")

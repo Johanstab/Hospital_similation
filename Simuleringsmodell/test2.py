@@ -6,7 +6,7 @@ __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 import pandas as pd
 from pasient import Pasient
 from trafikklys import TrafikkLys
-from stue import Sykehus, OrtoStue, RestStue
+from sykehus import Sykehus, OrtoStue, RestStue
 from test import Stue
 
 sim = TrafikkLys()
