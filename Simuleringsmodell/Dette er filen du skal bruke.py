@@ -90,32 +90,24 @@ if __name__ == '__main__':
                 for index, row in elektiv.iterrows():
                     if row['Måned'] == m and row['Ukedag'] == j and row['TidsIntervallStue'] == skift:
                         if row['Stue'] == 'N-01':
-                            tid = stue_ort_1.get_time(skift)
-                            tid = stue_ort_1.get_time(skift) - row['StueTidMin'] - 45
+                            stue_ort_1.update_tid(skift,row['StueTidMin'])
                         elif row['Stue'] == 'N-02':
-                            tid = stue_ort_2.get_time(skift)
-                            tid += - row['StueTidMin'] - 45
+                            stue_ort_2.update_tid(skift, row['StueTidMin'])
                         elif row['Stue'] == 'N-03':
-                            tid = stue_ort_3.get_time(skift)
-                            tid += - row['StueTidMin'] - 45
+                            stue_ort_3.update_tid(skift, row['StueTidMin'])
                         elif row['Stue'] == 'N-04':
-                            tid = stue_ort_4.get_time(skift)
-                            tid = stue_ort_4.get_time(skift) - row['StueTidMin'] - 45
+                            stue_ort_4.update_tid(skift, row['StueTidMin'])
                         elif row['Stue'] == 'N-05':
-                            tid = stue_andre_1.get_time(skift)
-                            tid += - row['StueTidMin'] - 45
+                            stue_andre_1.update_tid(skift, row['StueTidMin'])
                         elif row['Stue'] == 'N-06':
-                            tid = stue_andre_2.get_time(skift)
-                            tid += - row['StueTidMin'] - 45
+                            stue_andre_2.update_tid(skift, row['StueTidMin'])
                         elif row['Stue'] == 'N-07':
-                            tid = stue_andre_3.get_time(skift)
-                            tid += - row['StueTidMin'] - 45
+                            stue_andre_3.update_tid(skift, row['StueTidMin'])
                         elif row['Stue'] == 'N-10':
-                            tid = stue_andre_4.get_time(skift)
-                            tid += - row['StueTidMin'] - 45
+                            stue_andre_4.update_tid(skift, row['StueTidMin'])
                         elif row['Stue'] == 'N-12':
-                            tid = stue_andre_5.get_time(skift)
-                            tid += - row['StueTidMin'] - 45
+                            stue_andre_5.update_tid(skift, row['StueTidMin'])
+
 
                 if skift == 1:
                     liste_stuer_o = [stue_ort_1.get_time(skift) , stue_ort_2.get_time(skift),
