@@ -12,10 +12,10 @@ sim = TrafikkLys()
 stue = Sykehus()
 pasient_liste = []
 pasient_df = pd.read_excel(
-    '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/output.xls')
+    '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/ferdigbehandletinput.xls')
 pasient_df = pasient_df.reset_index()
 diagnose_df = pd.read_excel(
-    '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/test3.xls')
+    '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/test55.xls')
 
 df = pd.read_excel(
     '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/Data NBH SOP 2019 Koder & Trafikklys 1.xls')
@@ -36,6 +36,7 @@ if __name__ == '__main__':
     neste_skift = []
     liste_stuer_o = []
     liste_stuer_a = []
+    neste_år = []
 
     for m in range(1, 13): #Her går vi gjennom de 12 måneddedne
 
@@ -90,7 +91,7 @@ if __name__ == '__main__':
                     if row['Måned'] == m and row['Ukedag'] == j and row['TidsIntervallStue'] == skift:
                         if row['Stue'] == 'N-01':
                             tid = stue_ort_1.get_time(skift)
-                            tid += - row['StueTidMin'] - 45
+                            tid = stue_ort_1.get_time(skift) - row['StueTidMin'] - 45
                         elif row['Stue'] == 'N-02':
                             tid = stue_ort_2.get_time(skift)
                             tid += - row['StueTidMin'] - 45
@@ -99,7 +100,7 @@ if __name__ == '__main__':
                             tid += - row['StueTidMin'] - 45
                         elif row['Stue'] == 'N-04':
                             tid = stue_ort_4.get_time(skift)
-                            tid += - row['StueTidMin'] - 45
+                            tid = stue_ort_4.get_time(skift) - row['StueTidMin'] - 45
                         elif row['Stue'] == 'N-05':
                             tid = stue_andre_1.get_time(skift)
                             tid += - row['StueTidMin'] - 45
@@ -110,10 +111,10 @@ if __name__ == '__main__':
                             tid = stue_andre_3.get_time(skift)
                             tid += - row['StueTidMin'] - 45
                         elif row['Stue'] == 'N-10':
-                            tid = stue_andre_1.get_time(skift)
+                            tid = stue_andre_4.get_time(skift)
                             tid += - row['StueTidMin'] - 45
                         elif row['Stue'] == 'N-12':
-                            tid = stue_andre_1.get_time(skift)
+                            tid = stue_andre_5.get_time(skift)
                             tid += - row['StueTidMin'] - 45
 
                 if skift == 1:
@@ -198,10 +199,17 @@ if __name__ == '__main__':
 
                         else:
                             neste_skift.append(i)
+                            i.ventetid += stue_ort_1.fast_tid_delt(skift)
+                            i.tid += 1
                             if k == natt and i.ukedag < 6:
                                 i.ukedag += 1
                             elif k == natt and i.ukedag == 6:
                                 i.ukedag = 0
+                                i.month += 1
+                                i.tid = 1
+                            if i.month == 13:
+                                i.month = 1
+                                neste_år.append(i)
 
                     elif not i.fagOmrade == 'Ortopedi' and i.hast == 'Red':
                         if liste_stuer_a[tid_a_index] - i.stuetid - 45 >= 0:
@@ -212,12 +220,19 @@ if __name__ == '__main__':
 
                         else:
                             neste_skift.append(i)
+                            i.ventetid += stue_andre_1.fast_tid_delt(skift)
+                            i.tid += 1
                             if k == natt and i.ukedag < 6:
                                 i.ukedag += 1
                             elif k == natt and i.ukedag == 6:
                                 i.ukedag = 0
+                                i.month += 1
+                                i.tid = 1
+                            if i.month == 13:
+                                i.month = 1
+                                neste_år.append(i)
 
-                    elif i.fagOmrade == 'Ortopedi' and i.hast == 'Yellow':
+                    elif i.fagOmrade == 'Ortopedi' and i.hast == 'Yellow' and skift != 4:
                         if liste_stuer_o[tid_o_index] - i.stuetid - 45 >= 0:
                             i.inntid = liste_stuer_o[tid_o_index]
                             liste_stuer_o[tid_o_index] += - i.stuetid - 45
@@ -225,13 +240,34 @@ if __name__ == '__main__':
                             i.ventetid += stue_ort_1.fast_tid(skift) - i.inntid
                         else:
                             neste_skift.append(i)
-                            i.ventetid += stue_ort_1.fast_tid(skift)
+                            i.ventetid += stue_ort_1.fast_tid_delt(skift)
+                            i.tid += 1
                             if k == natt and i.ukedag < 6:
                                 i.ukedag += 1
                             elif k == natt and i.ukedag == 6:
                                 i.ukedag = 0
+                                i.month += 1
+                                i.tid = 1
+                            if i.month == 13:
+                                i.month = 1
+                                neste_år.append(i)
 
-                    elif not i.fagOmrade == 'Ortopedi' and i.hast == 'Yellow':
+                    elif i.fagOmrade == 'Ortopedi' and i.hast == 'Yellow' and skift == 4:
+
+                        i.ventetid += stue_ort_1.fast_tid_delt(skift)
+
+                        if k == natt and i.ukedag < 6:
+                            i.ukedag += 1
+                        elif k == natt and i.ukedag == 6:
+                            i.ukedag = 0
+                            i.month += 1
+                            i.tid = 1
+                        if i.month == 13:
+                            i.month = 1
+                            neste_år.append(i)
+
+
+                    elif not i.fagOmrade == 'Ortopedi' and i.hast == 'Yellow' and skift != 4:
                         if liste_stuer_a[tid_a_index] - i.stuetid - 45 >= 0:
                             i.inntid = liste_stuer_a[tid_a_index]
                             liste_stuer_a[tid_a_index] += - i.stuetid - 45
@@ -239,13 +275,33 @@ if __name__ == '__main__':
                             i.ventetid += stue_andre_1.fast_tid(skift) - i.inntid
                         else:
                             neste_skift.append(i)
-                            i.ventetid += stue_andre_1.fast_tid(skift)
+                            i.ventetid += stue_andre_1.fast_tid_delt(skift)
+                            i.tid += 1
                             if k == natt and i.ukedag < 6:
                                 i.ukedag += 1
                             elif k == natt and i.ukedag == 6:
                                 i.ukedag = 0
+                                i.month += 1
+                                i.tid = 1
+                            if i.month == 13:
+                                i.month = 1
+                                neste_år.append(i)
 
-                    elif i.fagOmrade == 'Ortopedi' and i.hast == 'Green':
+                    elif not i.fagOmrade == 'Ortopedi' and i.hast == 'Yellow' and skift == 4:
+
+                        i.ventetid += stue_ort_1.fast_tid_delt(skift)
+
+                        if k == natt and i.ukedag < 6:
+                            i.ukedag += 1
+                        elif k == natt and i.ukedag == 6:
+                            i.ukedag = 0
+                            i.month += 1
+                            i.tid = 1
+                        if i.month == 13:
+                            i.month = 1
+                            neste_år.append(i)
+
+                    elif i.fagOmrade == 'Ortopedi' and i.hast == 'Green' and skift != 4:
                         if liste_stuer_o[tid_o_index] - i.stuetid - 45 >= 0:
                             i.inntid = liste_stuer_o[tid_o_index]
                             liste_stuer_o[tid_o_index] += - i.stuetid - 45
@@ -253,14 +309,33 @@ if __name__ == '__main__':
                             i.ventetid += stue_ort_1.fast_tid(skift) - i.inntid
                         else:
                             neste_skift.append(i)
-                            i.ventetid += stue_ort_1.fast_tid(skift)
-
+                            i.ventetid += stue_ort_1.fast_tid_delt(skift)
+                            i.tid += 1
                             if k == natt and i.ukedag < 6:
                                 i.ukedag += 1
                             elif k == natt and i.ukedag == 6:
                                 i.ukedag = 0
+                                i.month += 1
+                                i.tid = 1
+                            if i.month == 13:
+                                i.month = 1
+                                neste_år.append(i)
 
-                    elif not i.fagOmrade == 'Ortopedi' and i.hast == 'Green':
+                    elif i.fagOmrade == 'Ortopedi' and i.hast == 'Green' and skift == 4:
+
+                        i.ventetid += stue_ort_1.fast_tid_delt(skift)
+
+                        if k == natt and i.ukedag < 6:
+                            i.ukedag += 1
+                        elif k == natt and i.ukedag == 6:
+                            i.ukedag = 0
+                            i.month += 1
+                            i.tid = 1
+                        if i.month == 13:
+                            i.month = 1
+                            neste_år.append(i)
+
+                    elif not i.fagOmrade == 'Ortopedi' and i.hast == 'Green' and skift != 4:
                         if liste_stuer_a[tid_a_index] - i.stuetid - 45 >= 0:
                             i.inntid = liste_stuer_a[tid_a_index]
                             liste_stuer_a[tid_a_index] += - i.stuetid - 45
@@ -268,12 +343,33 @@ if __name__ == '__main__':
                             i.ventetid += stue_andre_1.fast_tid(skift) - i.inntid
                         else:
                             neste_skift.append(i)
-                            i.ventetid += stue_andre_1.fast_tid(skift)
-
+                            i.ventetid += stue_andre_1.fast_tid_delt(skift)
+                            i.tid += 1
                             if k == natt and i.ukedag < 6:
                                 i.ukedag += 1
                             elif k == natt and i.ukedag == 6:
                                 i.ukedag = 0
+                                i.month += 1
+                                i.tid = 1
+                            if i.month == 13:
+                                i.month = 1
+                                neste_år.append(i)
+
+                    elif not i.fagOmrade == 'Ortopedi' and i.hast == 'Green' and skift == 4:
+
+                        i.ventetid += stue_ort_1.fast_tid_delt(skift)
+
+                        if k == natt and i.ukedag < 6:
+                            i.ukedag += 1
+                        elif k == natt and i.ukedag == 6:
+                            i.ukedag = 0
+                            i.month += 1
+                            i.tid = 1
+                        if i.month == 13:
+                            i.month = 1
+                            neste_år.append(i)
+
+
 
                     tid_o = max(liste_stuer_o)
                     tid_o_index = liste_stuer_o.index(tid_o)
@@ -281,13 +377,14 @@ if __name__ == '__main__':
                     tid_a = max(liste_stuer_a)
                     tid_a_index = liste_stuer_a.index(tid_a)
 
-            for i in neste_skift:
-                i.month += 1
+            neste_skift = []
 
     df = pd.DataFrame([vars(f) for f in ferdig_pasienter]) #Henter ut verdier fordi lister er dumme og df er best <3
-    df_2 = pd.DataFrame([vars(f) for f in neste_skift])
-    df.to_excel("output3.xls")
-    df_2.to_excel("output4.xls")
+    df_2 = pd.DataFrame([vars(f) for f in neste_år])
+    df_3 = pd.DataFrame([vars(f) for f in pasient_liste])
+    df.to_excel("ferdigbehandletoutput.xls")
+    df_2.to_excel("nesteår.xls")
+    df_3.to_excel('bugs.xls')
 
     # Det er masse piss her, men tror disse kommentarene skal gjøre det lettere å forstå. Jeg er veldi lei denne koden atm.
     #Vil egentlig bare kaste den ut vinduet <3 <3
