@@ -55,7 +55,7 @@ class Stue:
         elif skift == 4:
             return 540
 
-    def update_tid(self, value, skift):
+    def update(self, skift, value):
         if skift == 1:
             self.skift_1 += -value - 45
         elif skift == 2:
