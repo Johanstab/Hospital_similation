@@ -10,11 +10,16 @@ class Stue:
 
         self.navn = navn
 
+        self.skift_1 = 0
+        self.skift_2 = 0
+        self.skift_3 = 0
+        self.skift_4 = 0
+
         if not hoytid:
-            self.skift_1 = 480 * 4.3 #Vi ganger med 4 siden det er 4 av hver ukedag i hver måned. Vi går bare gjennom ukedagne 1 gang for hver måned
-            self.skift_2 = 150 * 4.3
-            self.skift_3 = 270 * 4.3
-            self.skift_4 = 540 * 4.3
+            self.skift_1 = 480
+            self.skift_2 = 150
+            self.skift_3 = 270
+            self.skift_4 = 540
 
         else:
             self.skift_1 = 4000 * 4
@@ -36,13 +41,13 @@ class Stue:
     def fast_tid(self, skift):
 
         if skift == 1:
-            return 480 * 4.3
+            return 480
         elif skift == 2:
-            return 150 * 4.3
+            return 150
         elif skift == 3:
-            return 270 * 4.3
+            return 270
         elif skift == 4:
-            return 540 * 4.3
+            return 540
 
     def fast_tid_delt(self, skift):
 
@@ -59,8 +64,24 @@ class Stue:
         if skift == 1:
             self.skift_1 += -value - 45
         elif skift == 2:
-            self.skift_2 += -value - 45
+            self.skift_2 += -value - 30
         elif skift == 3:
-            self.skift_3 += -value - 45
+            self.skift_3 += -value - 30
         elif skift == 4:
-            self.skift_4 += -value - 45
+            self.skift_4 += -value - 30
+
+    def new_shift(self, skift):
+        if skift == 2 and self.skift_1 > 0:
+            self.skift_2 += self.skift_1
+        elif skift == 3 and self.skift_2 > 0:
+            self.skift_3 += self.skift_2
+
+    def reset_stue(self, hoytid=False):
+
+        if not hoytid:
+            self.skift_1 = 480
+            self.skift_2 = 150
+            self.skift_3 = 270
+            self.skift_4 = 540
+
+
