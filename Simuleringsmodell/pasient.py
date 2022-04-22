@@ -31,6 +31,7 @@ class Pasient:
         self.nummer = None
         self.inntid = 0
         self.hast_nummer = 0
+        self.behandlet = False
 
 
 

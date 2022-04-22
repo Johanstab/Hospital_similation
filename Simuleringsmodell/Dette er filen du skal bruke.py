@@ -54,6 +54,8 @@ if __name__ == '__main__':
         stue_andre_4 = Stue('N-10')
         stue_andre_5 = Stue('N-12')
 
+        skift_stuer = 0
+
         for t in range(4):  # Her går vi gjennom 7 ukedager, men fordi jeg er dum er index her 0 til 6, å jeg gidder ikke fikse på den <3
 
             stue_ort_1.reset_stue()  # Her har jeg gitt de navn fordi jeg trodde jeg trengte det, men trengte det egentlig ikke , men ikke fjern kan være nyttig
@@ -67,6 +69,9 @@ if __name__ == '__main__':
             stue_andre_4.reset_stue()
             stue_andre_5.reset_stue()
 
+            skift_stuer += 1
+
+
             for j in range(7):
                 skift = 0  # Teller skift
                 dag = []
@@ -78,14 +83,15 @@ if __name__ == '__main__':
                 for i in pasient_liste:  # Sorterer de inn i de ulike skiftene for å bli letter eå jobbe med
                     if i.month == m:
                         if i.ukedag == j:
-                            if i.tid == 1:
-                                dag.append(i)
-                            elif i.tid == 2:
-                                tidligkveld.append(i)
-                            elif i.tid == 3:
-                                kveld.append(i)
-                            elif i.tid == 4:
-                                natt.append(i)
+                            if i.behandlet == False:
+                                if i.tid == 1:
+                                    dag.append(i)
+                                elif i.tid == 2:
+                                    tidligkveld.append(i)
+                                elif i.tid == 3:
+                                    kveld.append(i)
+                                elif i.tid == 4:
+                                    natt.append(i)
 
                 dag.sort(key=lambda x: (x.hast_nummer, x.ventetid),
                          reverse=True)  # Her er mitt tapre forsøk på å sorte slik at man både tar hensyn til farge å ventetid. Ikke at det har hjulpet, men hei jeg prøvde
@@ -98,18 +104,6 @@ if __name__ == '__main__':
 
                     k.extend(neste_skift)
                     neste_skift = []
-
-                    stue_ort_1.new_shift(skift)
-                    stue_ort_2.new_shift(skift)
-                    stue_ort_3.new_shift(skift)
-                    stue_ort_4.new_shift(skift)
-
-                    stue_andre_1.new_shift(skift)
-                    stue_andre_2.new_shift(skift)
-                    stue_andre_3.new_shift(skift)
-                    stue_andre_4.new_shift(skift)
-                    stue_andre_5.new_shift(skift)
-
                     skift += 1
                     total_tid_o = stue_ort_1.fast_tid(skift)
                     total_tid_a = stue_andre_1.fast_tid(skift)
@@ -137,7 +131,7 @@ if __name__ == '__main__':
                             elif row['Stue'] == 'N-12':
                                 stue_andre_5.update(skift, (row['StueTidMin'])/4)
 
-                    if skift == 1:
+                    if skift == 1 and skift_stuer <= 1:
                         liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
                         liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
                                          stue_andre_5]
@@ -145,8 +139,11 @@ if __name__ == '__main__':
                         liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
                         liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
 
+                        stuer_skift_1_o = liste_stuer_o
+                        stuer_skift_1_a = liste_stuer_a
 
-                    elif skift == 2:
+
+                    elif skift == 2 and skift_stuer <= 1:
 
                         liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
                         liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
@@ -158,7 +155,10 @@ if __name__ == '__main__':
                         liste_stuer_o = liste_stuer_o[0:4]
                         liste_stuer_a = liste_stuer_a[0:5]
 
-                    elif skift == 3:
+                        stuer_skift_2_o = liste_stuer_o
+                        stuer_skift_2_a = liste_stuer_a
+
+                    elif skift == 3 and skift_stuer <= 1:
                         liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
                         liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
                                          stue_andre_5]
@@ -169,10 +169,54 @@ if __name__ == '__main__':
                         liste_stuer_o = liste_stuer_o[0:2]
                         liste_stuer_a = liste_stuer_a[0:4]
 
-                    elif skift == 4:
+                        stuer_skift_3_o = liste_stuer_o
+                        stuer_skift_3_a = liste_stuer_a
+
+                    elif skift == 4 and skift_stuer <= 1:
                         liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
                         liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
                                          stue_andre_5]
+
+                        liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                        liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                        liste_stuer_o = liste_stuer_o[0:1]
+                        liste_stuer_a = liste_stuer_a[0:1]
+
+                        stuer_skift_4_o = liste_stuer_o
+                        stuer_skift_4_a = liste_stuer_a
+
+                    elif skift == 1 and skift_stuer > 1:
+                        liste_stuer_o = stuer_skift_1_o
+                        liste_stuer_a = stuer_skift_1_a
+
+                        liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                        liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                    elif skift == 2 and skift_stuer <= 1:
+
+                        liste_stuer_o = stuer_skift_2_o
+                        liste_stuer_a = stuer_skift_2_a
+
+                        liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                        liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                        liste_stuer_o = liste_stuer_o[0:4]
+                        liste_stuer_a = liste_stuer_a[0:5]
+
+                    elif skift == 3 and skift_stuer <= 1:
+                        liste_stuer_o = stuer_skift_3_o
+                        liste_stuer_a = stuer_skift_3_a
+
+                        liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                        liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                        liste_stuer_o = liste_stuer_o[0:2]
+                        liste_stuer_a = liste_stuer_a[0:4]
+
+                    elif skift == 4 and skift_stuer <= 1:
+                        liste_stuer_o = stuer_skift_4_o
+                        liste_stuer_a = stuer_skift_4_a
 
                         liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
                         liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
@@ -186,6 +230,7 @@ if __name__ == '__main__':
                                 i.inntid = liste_stuer_o[0].get_time(skift)
                                 liste_stuer_o[0].update(skift, i.stuetid)
                                 ferdig_pasienter.append(i)
+                                i.behandlet = True
                                 i.ventetid += stue_ort_1.fast_tid(skift) - i.inntid
                                 liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
 
@@ -209,6 +254,7 @@ if __name__ == '__main__':
                                 i.inntid = liste_stuer_a[0].get_time(skift)
                                 liste_stuer_a[0].update(skift, i.stuetid)
                                 ferdig_pasienter.append(i)
+                                i.behandlet = True
                                 i.ventetid += stue_andre_1.fast_tid(skift) - i.inntid
                                 liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
 
@@ -232,6 +278,7 @@ if __name__ == '__main__':
                                 i.inntid = liste_stuer_o[0].get_time(skift)
                                 liste_stuer_o[0].update(skift, i.stuetid)
                                 ferdig_pasienter.append(i)
+                                i.behandlet = True
                                 i.ventetid += stue_ort_1.fast_tid(skift) - i.inntid
                                 liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
                             else:
@@ -270,6 +317,7 @@ if __name__ == '__main__':
                                 i.inntid = liste_stuer_a[0].get_time(skift)
                                 liste_stuer_a[0].update(skift, i.stuetid)
                                 ferdig_pasienter.append(i)
+                                i.behandlet = True
                                 i.ventetid += stue_andre_1.fast_tid(skift) - i.inntid
                                 liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
                             else:
@@ -307,6 +355,7 @@ if __name__ == '__main__':
                                 i.inntid = liste_stuer_o[0].get_time(skift)
                                 liste_stuer_o[0].update(skift, i.stuetid)
                                 ferdig_pasienter.append(i)
+                                i.behandlet = True
                                 i.ventetid += stue_ort_1.fast_tid(skift) - i.inntid
                                 liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
                             else:
@@ -344,6 +393,7 @@ if __name__ == '__main__':
                                 i.inntid = liste_stuer_a[0].get_time(skift)
                                 liste_stuer_a[0].update(skift, i.stuetid)
                                 ferdig_pasienter.append(i)
+                                i.behandlet = True
                                 i.ventetid += stue_andre_1.fast_tid(skift) - i.inntid
                                 liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
                             else:
