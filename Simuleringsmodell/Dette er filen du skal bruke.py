@@ -41,18 +41,18 @@ if __name__ == '__main__':
     tid_til_overs = []
     tid_tid = []
 
+    stue_ort_1 = Stue('N-01')  # Her har jeg gitt de navn fordi jeg trodde jeg trengte det, men trengte det egentlig ikke , men ikke fjern kan være nyttig
+    stue_ort_2 = Stue('N-02')
+    stue_ort_3 = Stue('N-03')
+    stue_ort_4 = Stue('N-04')
+
+    stue_andre_1 = Stue('N-05')
+    stue_andre_2 = Stue('N-06')
+    stue_andre_3 = Stue('N-07')
+    stue_andre_4 = Stue('N-10')
+    stue_andre_5 = Stue('N-12')
+
     for m in range(1, 13):  # Her går vi gjennom de 12 måneddedne
-
-        stue_ort_1 = Stue('N-01')  # Her har jeg gitt de navn fordi jeg trodde jeg trengte det, men trengte det egentlig ikke , men ikke fjern kan være nyttig
-        stue_ort_2 = Stue('N-02')
-        stue_ort_3 = Stue('N-03')
-        stue_ort_4 = Stue('N-04')
-
-        stue_andre_1 = Stue('N-05')
-        stue_andre_2 = Stue('N-06')
-        stue_andre_3 = Stue('N-07')
-        stue_andre_4 = Stue('N-10')
-        stue_andre_5 = Stue('N-12')
 
         skift_stuer = 0
 
@@ -70,7 +70,6 @@ if __name__ == '__main__':
             stue_andre_5.reset_stue()
 
             skift_stuer += 1
-
 
             for j in range(7):
                 skift = 0  # Teller skift
@@ -92,12 +91,6 @@ if __name__ == '__main__':
                                     kveld.append(i)
                                 elif i.tid == 4:
                                     natt.append(i)
-
-                dag.sort(key=lambda x: (x.hast_nummer, x.ventetid),
-                         reverse=True)  # Her er mitt tapre forsøk på å sorte slik at man både tar hensyn til farge å ventetid. Ikke at det har hjulpet, men hei jeg prøvde
-                tidligkveld.sort(key=lambda x: (x.hast_nummer, x.ventetid), reverse=True)
-                kveld.sort(key=lambda x: (x.hast_nummer, x.ventetid), reverse=True)
-                natt.sort(key=lambda x: (x.hast_nummer, x.ventetid), reverse=True)
 
                 for k in [dag, tidligkveld, kveld,
                           natt]:  # Her velger vi så kalrt hvilket skift i jobber med
@@ -238,9 +231,10 @@ if __name__ == '__main__':
                                 neste_skift.append(i)
                                 i.ventetid += stue_ort_1.fast_tid_delt(skift)
                                 i.tid += 1
-                                if k == natt and i.ukedag < 6:
+                                if i.tid == 4 and i.ukedag < 6:
                                     i.ukedag += 1
-                                elif k == natt and i.ukedag == 6:
+                                    i.tid = 1
+                                elif i.tid == 4 and i.ukedag == 6:
                                     i.ukedag = 0
                                     i.tid = 1
                                 if t == 4:
@@ -262,9 +256,10 @@ if __name__ == '__main__':
                                 neste_skift.append(i)
                                 i.ventetid += stue_andre_1.fast_tid_delt(skift)
                                 i.tid += 1
-                                if k == natt and i.ukedag < 6:
+                                if i.tid == 4 and i.ukedag < 6:
                                     i.ukedag += 1
-                                elif k == natt and i.ukedag == 6:
+                                    i.tid = 1
+                                elif i.tid == 4 and i.ukedag == 6:
                                     i.ukedag = 0
                                     i.tid = 1
                                 if t == 4:
@@ -285,9 +280,10 @@ if __name__ == '__main__':
                                 neste_skift.append(i)
                                 i.ventetid += stue_ort_1.fast_tid_delt(skift)
                                 i.tid += 1
-                                if k == natt and i.ukedag < 6:
+                                if i.tid == 4 and i.ukedag < 6:
                                     i.ukedag += 1
-                                elif k == natt and i.ukedag == 6:
+                                    i.tid = 1
+                                elif i.tid == 4 and i.ukedag == 6:
                                     i.ukedag = 0
                                     i.tid = 1
                                 if t == 4:
@@ -300,9 +296,10 @@ if __name__ == '__main__':
 
                             i.ventetid += stue_ort_1.fast_tid_delt(skift)
 
-                            if k == natt and i.ukedag < 6:
+                            if i.tid == 4 and i.ukedag < 6:
                                 i.ukedag += 1
-                            elif k == natt and i.ukedag == 6:
+                                i.tid = 1
+                            elif i.tid == 4 and i.ukedag == 6:
                                 i.ukedag = 0
                                 i.tid = 1
                             if t == 4:
@@ -324,9 +321,10 @@ if __name__ == '__main__':
                                 neste_skift.append(i)
                                 i.ventetid += stue_andre_1.fast_tid_delt(skift)
                                 i.tid += 1
-                                if k == natt and i.ukedag < 6:
+                                if i.tid == 4 and i.ukedag < 6:
                                     i.ukedag += 1
-                                elif k == natt and i.ukedag == 6:
+                                    i.tid = 1
+                                elif i.tid == 4 and i.ukedag == 6:
                                     i.ukedag = 0
                                     i.tid = 1
                                 if t == 4:
@@ -339,9 +337,10 @@ if __name__ == '__main__':
 
                             i.ventetid += stue_ort_1.fast_tid_delt(skift)
 
-                            if k == natt and i.ukedag < 6:
+                            if i.tid == 4 and i.ukedag < 6:
                                 i.ukedag += 1
-                            elif k == natt and i.ukedag == 6:
+                                i.tid = 1
+                            elif i.tid == 4 and i.ukedag == 6:
                                 i.ukedag = 0
                                 i.tid = 1
                             if t == 4:
@@ -362,9 +361,10 @@ if __name__ == '__main__':
                                 neste_skift.append(i)
                                 i.ventetid += stue_ort_1.fast_tid_delt(skift)
                                 i.tid += 1
-                                if k == natt and i.ukedag < 6:
+                                if i.tid == 4 and i.ukedag < 6:
                                     i.ukedag += 1
-                                elif k == natt and i.ukedag == 6:
+                                    i.tid = 1
+                                elif i.tid == 4 and i.ukedag == 6:
                                     i.ukedag = 0
                                     i.tid = 1
                                 if t == 4:
@@ -377,9 +377,10 @@ if __name__ == '__main__':
 
                             i.ventetid += stue_ort_1.fast_tid_delt(skift)
 
-                            if k == natt and i.ukedag < 6:
+                            if i.tid == 4 and i.ukedag < 6:
                                 i.ukedag += 1
-                            elif k == natt and i.ukedag == 6:
+                                i.tid = 1
+                            elif i.tid == 4 and i.ukedag == 6:
                                 i.ukedag = 0
                                 i.tid = 1
                             if t == 4:
@@ -400,9 +401,10 @@ if __name__ == '__main__':
                                 neste_skift.append(i)
                                 i.ventetid += stue_andre_1.fast_tid_delt(skift)
                                 i.tid += 1
-                                if k == natt and i.ukedag < 6:
+                                if i.tid == 4 and i.ukedag < 6:
                                     i.ukedag += 1
-                                elif k == natt and i.ukedag == 6:
+                                    i.tid = 1
+                                elif i.tid == 4 and i.ukedag == 6:
                                     i.ukedag = 0
                                     i.tid = 1
                                 if t == 4:
@@ -415,9 +417,10 @@ if __name__ == '__main__':
 
                             i.ventetid += stue_ort_1.fast_tid_delt(skift)
 
-                            if k == natt and i.ukedag < 6:
+                            if i.tid == 4 and i.ukedag < 6:
                                 i.ukedag += 1
-                            elif k == natt and i.ukedag == 6:
+                                i.tid = 1
+                            elif i.tid == 4 and i.ukedag == 6:
                                 i.ukedag = 0
                                 i.tid = 1
                             if t == 4:

@@ -10,16 +10,11 @@ class Stue:
 
         self.navn = navn
 
-        self.skift_1 = 0
-        self.skift_2 = 0
-        self.skift_3 = 0
-        self.skift_4 = 0
-
         if not hoytid:
-            self.skift_1 = 480
-            self.skift_2 = 150
-            self.skift_3 = 270
-            self.skift_4 = 540
+            self.skift_1 = 480 * 1.33
+            self.skift_2 = 150 * 1.33
+            self.skift_3 = 270 * 1.33
+            self.skift_4 = 540 * 1.33
 
         else:
             self.skift_1 = 4000 * 4
@@ -41,24 +36,24 @@ class Stue:
     def fast_tid(self, skift):
 
         if skift == 1:
-            return 480
+            return 480 * 1.33
         elif skift == 2:
-            return 150
+            return 150 * 1.33
         elif skift == 3:
-            return 270
+            return 270 * 1.33
         elif skift == 4:
-            return 540
+            return 540 * 1.33
 
     def fast_tid_delt(self, skift):
 
         if skift == 1:
-            return 480
+            return 480 * 1.33
         elif skift == 2:
-            return 150
+            return 150 * 1.33
         elif skift == 3:
-            return 270
+            return 270 * 1.33
         elif skift == 4:
-            return 540
+            return 540 * 1.33
 
     def update(self, skift, value):
         if skift == 1:
@@ -70,18 +65,31 @@ class Stue:
         elif skift == 4:
             self.skift_4 += -value - 30
 
-    def new_shift(self, skift):
-        if skift == 2 and self.skift_1 > 0:
-            self.skift_2 += self.skift_1
-        elif skift == 3 and self.skift_2 > 0:
-            self.skift_3 += self.skift_2
-
     def reset_stue(self, hoytid=False):
 
         if not hoytid:
-            self.skift_1 = 480
-            self.skift_2 = 150
-            self.skift_3 = 270
-            self.skift_4 = 540
+            self.skift_1 = 480 * 1.33
+            self.skift_2 = 150 * 1.33
+            self.skift_3 = 270 * 1.33
+            self.skift_4 = 540 * 1.33
 
+    def test_time(self,skift, value):
+
+        tid_1 = self.skift_1
+        tid_2 = self.skift_2
+        tid_3 = self.skift_3
+        tid_4 = self.skift_4
+
+        if skift == 1:
+            tid_1 += -value - 45
+            return  tid_1
+        elif skift == 2:
+            tid_2 += -value - 30
+            return tid_2
+        elif skift == 3:
+            tid_3 += -value - 30
+            return tid_3
+        elif skift == 4:
+            tid_4 += -value - 30
+            return tid_4
 
