@@ -39,3 +39,53 @@ class Sykehus:
                 pasient.tid = 3
             elif pasient.tid == 'Natt':
                 pasient.tid = 4
+
+    def legge_til_uker(self, pasient_liste):
+
+        counter = 1
+
+        for month in range(1, 13):
+            for day in range(7):
+                dag = []
+                tidligkveld = []
+                kveld = []
+                natt = []
+                slutt_liste = []
+
+                for pasient in pasient_liste:
+
+                    if pasient.month == month:
+
+                        if pasient.ukedag == day:
+
+                            if not pasient.behandlet:
+
+                                if pasient.tid == 1:
+                                    dag.append(pasient)
+
+                                elif pasient.tid == 2:
+                                    tidligkveld.append(pasient)
+
+                                elif pasient.tid == 3:
+                                    kveld.append(pasient)
+
+                                elif pasient.tid == 4:
+                                    natt.append(pasient)
+
+                dag.sort(key=lambda x: x.hast_nummer, reverse=True)
+                tidligkveld.sort(key=lambda x: x.hast_nummer, reverse=True)
+                kveld.sort(key=lambda x: x.hast_nummer, reverse=True)
+                natt.sort(key=lambda x: x.hast_nummer, reverse=True)
+
+                slutt_liste.extend(dag)
+                slutt_liste.extend(tidligkveld)
+                slutt_liste.extend(kveld)
+                slutt_liste.extend(natt)
+
+                for i in slutt_liste:
+                    i.uke = counter
+
+                    if counter < 4:
+                        counter += 1
+                    else:
+                        counter = 1

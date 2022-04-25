@@ -29,12 +29,12 @@ if __name__ == '__main__':
     pasient_liste = sim.pasient_liste
     stue.fordel_trafikklys(pasient_liste, diagnose_df)
     stue.fikser_dager(pasient_liste)
+    stue.legge_til_uker(pasient_liste)
     ferdig_pasienter = []
     neste_skift = []
     liste_stuer_o = []
     liste_stuer_a = []
     neste_year = []
-
 
     # Setter opp stuene for første gang:
     stue_ort_1 = Stue('N-01')
@@ -508,5 +508,3 @@ if __name__ == '__main__':
     df.to_excel("ferdigbehandletoutput ny.xls")
     df_2.to_excel("nesteår ny.xls")
     df_3.to_excel('pasienter ny.xls')
-
-
