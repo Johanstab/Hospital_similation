@@ -4,20 +4,20 @@ __author__ = 'Johan Stabekk, Sabina Langås'
 __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
 import pandas as pd
-from sykehus import Sykehus
-from stue import Stue
-from trafikklys import TrafikkLys
+from Simuleringsmodell.sykehus import Sykehus
+from Simuleringsmodell.stue import Stue
+from Simuleringsmodell.trafikklys import TrafikkLys
 
 sim = TrafikkLys()
 stue = Sykehus()
 pasient_liste = []
 pasient_df = pd.read_excel(
-    '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/ferdigbehandletinput.xls')
+    'C:/Users/Eier/Documents/Master 2022/data/Ahus/ferdigbehandletinput.xls')
 pasient_df = pasient_df.reset_index()
 diagnose_df = pd.read_excel(
-    '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/test55.xls')
+    'C:/Users/Eier/Documents/Master 2022/data/Ahus/test55.xls')
 elektiv = pd.read_excel(
-    '/Users/sabinal/Desktop/untitled folder 2/Elektiv tid brukt.xls')
+    'C:/Users/Eier/Documents/Master 2022/data/Ahus/Elektiv-tid-brukt.xlsx')
 elektiv = elektiv.replace(to_replace=["Dag", "Tidligkveld", "Kveld", "Natt"],
                           value=[int(1), int(2), int(3), int(4)])
 elektiv = elektiv.replace(to_replace=["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag",
@@ -173,7 +173,7 @@ if __name__ == '__main__':
 
 
                     for person in skift_tid:
-                        if person.fagOmrade == 'Ortopedi' and person.hast == 'Red':
+                        if person.fagOmrade == 'Ortopedi' and person.hast == 'Red' and person.uke == week:
                             if liste_stuer_o[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_o[0].get_time(skift)
                                 liste_stuer_o[0].update(skift, person.stuetid)
@@ -201,16 +201,18 @@ if __name__ == '__main__':
                                     else:
 
                                         person.ukedag = 0
+                                        person.uke += 1
 
                                         if week >= 4:
 
                                             person.month += 1
+                                            person.uke = 1
 
                                             if person.month > 12:
                                                 person.month = 1
                                                 neste_year.append(person)
 
-                        if not person.fagOmrade == 'Ortopedi' and person.hast == 'Red':
+                        if not person.fagOmrade == 'Ortopedi' and person.hast == 'Red' and person.uke == week:
                             if liste_stuer_a[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_a[0].get_time(skift)
                                 liste_stuer_a[0].update(skift, person.stuetid)
@@ -238,15 +240,17 @@ if __name__ == '__main__':
                                     else:
 
                                         person.ukedag = 0
+                                        person.uke += 1
 
                                         if week >= 4:
                                             person.month += 1
+                                            person.uke = 1
 
                                             if person.month > 12:
                                                 person.month = 1
                                                 neste_year.append(person)
 
-                        if person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift != 4:
+                        if person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift != 4 and person.uke == week:
                             if liste_stuer_o[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_o[0].get_time(skift)
                                 liste_stuer_o[0].update(skift, person.stuetid)
@@ -274,15 +278,17 @@ if __name__ == '__main__':
                                     else:
 
                                         person.ukedag = 0
+                                        person.uke += 1
 
                                         if week >= 4:
                                             person.month += 1
+                                            person.uke = 1
 
                                             if person.month > 12:
                                                 person.month = 1
                                                 neste_year.append(person)
 
-                        if not person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift != 4:
+                        if not person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift != 4 and person.uke == week:
                             if liste_stuer_a[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_a[0].get_time(skift)
                                 liste_stuer_a[0].update(skift, person.stuetid)
@@ -310,9 +316,11 @@ if __name__ == '__main__':
                                     else:
 
                                         person.ukedag = 0
+                                        person.uke += 1
 
                                         if week >= 4:
                                             person.month += 1
+                                            person.uke = 1
 
                                             if person.month > 12:
                                                 person.month = 1
@@ -320,7 +328,7 @@ if __name__ == '__main__':
 
 
 
-                        elif person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift == 4:
+                        elif person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift == 4 and person.uke == week:
 
                             person.ventetid += stue_ort_1.fast_tid_delt(skift)
 
@@ -339,16 +347,18 @@ if __name__ == '__main__':
                                 else:
 
                                     person.ukedag = 0
+                                    person.uke += 1
 
                                     if week >= 4:
                                         person.month += 1
+                                        person.uke = 1
 
                                         if person.month > 12:
                                             person.month = 1
                                             neste_year.append(person)
 
 
-                        elif not person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift == 4:
+                        elif not person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift == 4 and person.uke == week:
 
                             person.ventetid += stue_andre_1.fast_tid_delt(skift)
 
@@ -367,15 +377,17 @@ if __name__ == '__main__':
                                 else:
 
                                     person.ukedag = 0
+                                    person.uke += 1
 
                                     if week >= 4:
                                         person.month += 1
+                                        person.uke = 1
 
                                         if person.month > 12:
                                             person.month = 1
                                             neste_year.append(person)
 
-                        if person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift != 4:
+                        if person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift != 4 and person.uke == week:
                             if liste_stuer_o[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_o[0].get_time(skift)
                                 liste_stuer_o[0].update(skift, person.stuetid)
@@ -403,15 +415,17 @@ if __name__ == '__main__':
                                     else:
 
                                         person.ukedag = 0
+                                        person.uke += 1
 
                                         if week >= 4:
                                             person.month += 1
+                                            person.uke = 1
 
                                             if person.month > 12:
                                                 person.month = 1
                                                 neste_year.append(person)
 
-                        if not person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift != 4:
+                        if not person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift != 4 and person.uke == week:
                             if liste_stuer_a[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_a[0].get_time(skift)
                                 liste_stuer_a[0].update(skift, person.stuetid)
@@ -439,15 +453,17 @@ if __name__ == '__main__':
                                     else:
 
                                         person.ukedag = 0
+                                        person.uke += 1
 
                                         if week >= 4:
                                             person.month += 1
+                                            person.uke = 1
 
                                             if person.month > 12:
                                                 person.month = 1
                                                 neste_year.append(person)
 
-                        elif person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift == 4:
+                        elif person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift == 4 and person.uke == week:
 
                             person.ventetid += stue_ort_1.fast_tid_delt(skift)
 
@@ -466,15 +482,17 @@ if __name__ == '__main__':
                                 else:
 
                                     person.ukedag = 0
+                                    person.uke += 1
 
                                     if week >= 4:
                                         person.month += 1
+                                        person.uke = 1
 
                                         if person.month > 12:
                                             person.month = 1
                                             neste_year.append(person)
 
-                        elif not person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift == 4:
+                        elif not person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift == 4 and person.uke == week:
 
                             person.ventetid += stue_andre_1.fast_tid_delt(skift)
 
@@ -493,9 +511,11 @@ if __name__ == '__main__':
                                 else:
 
                                     person.ukedag = 0
+                                    person.uke += 1
 
                                     if week >= 4:
                                         person.month += 1
+                                        person.uke = 1
 
                                         if person.month > 12:
                                             person.month = 1
