@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88e6a8f6-1498-4c40-8403-72a7da294bb4" name="Default Changelist" comment="">
+    <list default="true" id="150ebf8f-5436-41e2-8119-c978c0f093b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/Hospital_similation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Hospital_similation.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simuleringsmodell/siste.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simuleringsmodell/siste.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/trafikklys.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simuleringsmodell/trafikklys.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/stue.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simuleringsmodell/stue.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,18 +69,6 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Simuleringsmodell" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.siste">
     <configuration name="Dette er filen du ikke skal bruke" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -203,7 +191,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -323,13 +311,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ordnet på import" />
@@ -353,8 +340,21 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Hospital_similation$sort_week_nr.coverage" NAME="sort_week_nr Coverage Results" MODIFIED="1650875748008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
-    <SUITE FILE_PATH="coverage/Hospital_similation$Dette_er_filen_du_skal_bruke.coverage" NAME="Dette er filen du skal bruke Coverage Results" MODIFIED="1650634208489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
-    <SUITE FILE_PATH="coverage/Hospital_similation$siste.coverage" NAME="siste Coverage Results" MODIFIED="1650887179235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$test233.coverage" NAME="Dette er filen du skal bruke Coverage Results" MODIFIED="1650722447683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$testtest.coverage" NAME="testtest Coverage Results" MODIFIED="1650388963102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$test3.coverage" NAME="test3 Coverage Results" MODIFIED="1650136189786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$test23.coverage" NAME="test23 Coverage Results" MODIFIED="1650380372806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$stue.coverage" NAME="stue Coverage Results" MODIFIED="1650379585806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$ny_versjon.coverage" NAME="ny versjon Coverage Results" MODIFIED="1650789203606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$testestest.coverage" NAME="testestest Coverage Results" MODIFIED="1650728570858" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$siste.coverage" NAME="siste Coverage Results" MODIFIED="1650893701826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$test.coverage" NAME="test Coverage Results" MODIFIED="1650438788023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$2.coverage" NAME="2 Coverage Results" MODIFIED="1650274776258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$test22.coverage" NAME="test22 Coverage Results" MODIFIED="1650383736600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1650288715277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$simulering.coverage" NAME="simulering Coverage Results" MODIFIED="1650379976251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$Dette_er_filen_du_ikke_skal_bruke.coverage" NAME="Dette er filen du ikke skal bruke Coverage Results" MODIFIED="1650789874073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$try_sim.coverage" NAME="try_sim Coverage Results" MODIFIED="1649579440485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$veldi_bra_filnavn.coverage" NAME="veldi bra filnavn Coverage Results" MODIFIED="1650875879665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
   </component>
 </project>

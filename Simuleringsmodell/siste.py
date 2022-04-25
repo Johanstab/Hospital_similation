@@ -12,12 +12,12 @@ sim = TrafikkLys()
 stue = Sykehus()
 pasient_liste = []
 pasient_df = pd.read_excel(
-    'C:/Users/Eier/Documents/Master 2022/data/Ahus/ferdigbehandletinput.xls')
+    '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/ferdigbehandletinput.xls')
 pasient_df = pasient_df.reset_index()
 diagnose_df = pd.read_excel(
-    'C:/Users/Eier/Documents/Master 2022/data/Ahus/test55.xls')
+    '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/DIAGNOSE.xls')
 elektiv = pd.read_excel(
-    'C:/Users/Eier/Documents/Master 2022/data/Ahus/Elektiv-tid-brukt.xlsx')
+    '/Users/sabinal/Desktop/untitled folder 2/Elektiv tid brukt.xls')
 elektiv = elektiv.replace(to_replace=["Dag", "Tidligkveld", "Kveld", "Natt"],
                           value=[int(1), int(2), int(3), int(4)])
 elektiv = elektiv.replace(to_replace=["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag",
@@ -125,52 +125,324 @@ if __name__ == '__main__':
                             elif row['Stue'] == 'N-12':
                                 stue_andre_5.update(skift, (row['StueTidMin'])/4)
 
-                    if skift == 1:
-                        liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
-                        liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
-                                         stue_andre_5]
+                    if month == 7 or month == 8:
 
-                        liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
-                        liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+                        if day == 5:
 
+                            if skift == 1:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
 
-                    elif skift == 2:
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
 
-                        liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
-                        liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
-                                         stue_andre_5]
-
-                        liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
-                        liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
-
-                        liste_stuer_o = liste_stuer_o[0:4]
-                        liste_stuer_a = liste_stuer_a[0:5]
+                                liste_stuer_o = liste_stuer_o[0:2]
+                                liste_stuer_a = liste_stuer_a[0:1]
 
 
-                    elif skift == 3:
-                        liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
-                        liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
-                                         stue_andre_5]
+                            elif skift == 2:
 
-                        liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
-                        liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
 
-                        liste_stuer_o = liste_stuer_o[0:2]
-                        liste_stuer_a = liste_stuer_a[0:4]
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
 
-
-                    elif skift == 4:
-                        liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
-                        liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
-                                         stue_andre_5]
-
-                        liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
-                        liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
-
-                        liste_stuer_o = liste_stuer_o[0:1]
-                        liste_stuer_a = liste_stuer_a[0:1]
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:2]
 
 
+                            elif skift == 3:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:2]
+
+
+                            elif skift == 4:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:1]
+
+                        elif day == 6:
+
+                            if skift == 1:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:2]
+
+
+                            elif skift == 2:
+
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:2]
+
+
+                            elif skift == 3:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:2]
+
+
+                            elif skift == 4:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:1]
+                        else:
+
+                            if skift == 1:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:3]
+                                liste_stuer_a = liste_stuer_a[0:4]
+
+
+                            elif skift == 2:
+
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:2]
+                                liste_stuer_a = liste_stuer_a[0:3]
+
+
+                            elif skift == 3:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:2]
+
+
+                            elif skift == 4:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:1]
+
+                    else:
+
+                        if day == 5:
+
+                            if skift == 1:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:2]
+                                liste_stuer_a = liste_stuer_a[0:2]
+
+
+                            elif skift == 2:
+
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:2]
+
+
+                            elif skift == 3:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:2]
+
+
+                            elif skift == 4:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:1]
+
+                        elif day == 6:
+
+                            if skift == 1:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:2]
+
+
+                            elif skift == 2:
+
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:2]
+
+
+                            elif skift == 3:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:2]
+
+
+                            elif skift == 4:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:1]
+                        else:
+
+                            if skift == 1:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+
+                            elif skift == 2:
+
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:4]
+                                liste_stuer_a = liste_stuer_a[0:5]
+
+
+                            elif skift == 3:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:2]
+                                liste_stuer_a = liste_stuer_a[0:4]
+
+
+                            elif skift == 4:
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:1]
+                                liste_stuer_a = liste_stuer_a[0:1]
 
                     for person in skift_tid:
                         if person.fagOmrade == 'Ortopedi' and person.hast == 'Red' and person.uke == week:
@@ -209,7 +481,7 @@ if __name__ == '__main__':
                                             person.uke = 1
 
                                             if person.month > 12:
-                                                person.month = 1
+                                                person.month = 13
                                                 neste_year.append(person)
 
                         if not person.fagOmrade == 'Ortopedi' and person.hast == 'Red' and person.uke == week:
@@ -247,7 +519,7 @@ if __name__ == '__main__':
                                             person.uke = 1
 
                                             if person.month > 12:
-                                                person.month = 1
+                                                person.month = 13
                                                 neste_year.append(person)
 
                         if person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift != 4 and person.uke == week:
@@ -285,7 +557,7 @@ if __name__ == '__main__':
                                             person.uke = 1
 
                                             if person.month > 12:
-                                                person.month = 1
+                                                person.month = 13
                                                 neste_year.append(person)
 
                         if not person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift != 4 and person.uke == week:
@@ -323,7 +595,7 @@ if __name__ == '__main__':
                                             person.uke = 1
 
                                             if person.month > 12:
-                                                person.month = 1
+                                                person.month = 13
                                                 neste_year.append(person)
 
 
@@ -354,7 +626,7 @@ if __name__ == '__main__':
                                         person.uke = 1
 
                                         if person.month > 12:
-                                            person.month = 1
+                                            person.month = 13
                                             neste_year.append(person)
 
 
@@ -384,7 +656,7 @@ if __name__ == '__main__':
                                         person.uke = 1
 
                                         if person.month > 12:
-                                            person.month = 1
+                                            person.month = 13
                                             neste_year.append(person)
 
                         if person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift != 4 and person.uke == week:
@@ -422,7 +694,7 @@ if __name__ == '__main__':
                                             person.uke = 1
 
                                             if person.month > 12:
-                                                person.month = 1
+                                                person.month = 13
                                                 neste_year.append(person)
 
                         if not person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift != 4 and person.uke == week:
@@ -460,7 +732,7 @@ if __name__ == '__main__':
                                             person.uke = 1
 
                                             if person.month > 12:
-                                                person.month = 1
+                                                person.month = 13
                                                 neste_year.append(person)
 
                         elif person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift == 4 and person.uke == week:
@@ -489,7 +761,7 @@ if __name__ == '__main__':
                                         person.uke = 1
 
                                         if person.month > 12:
-                                            person.month = 1
+                                            person.month = 13
                                             neste_year.append(person)
 
                         elif not person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift == 4 and person.uke == week:
@@ -518,9 +790,10 @@ if __name__ == '__main__':
                                         person.uke = 1
 
                                         if person.month > 12:
-                                            person.month = 1
+                                            person.month = 13
                                             neste_year.append(person)
 
+    ferdig_pasienter.extend(neste_year)
     df = pd.DataFrame([vars(f) for f in ferdig_pasienter])
     df_2 = pd.DataFrame([vars(f) for f in neste_year])
     df_3 = pd.DataFrame([vars(f) for f in pasient_liste])

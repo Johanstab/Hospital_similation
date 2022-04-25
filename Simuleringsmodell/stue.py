@@ -11,10 +11,10 @@ class Stue:
         self.navn = navn
 
         if not hoytid:
-            self.skift_1 = 480 * 1.33
-            self.skift_2 = 150 * 1.33
-            self.skift_3 = 270 * 1.33
-            self.skift_4 = 540 * 1.33
+            self.skift_1 = 480 * 1.3
+            self.skift_2 = 150 * 1.3
+            self.skift_3 = 270 * 1.3
+            self.skift_4 = 540 * 1.3
 
         else:
             self.skift_1 = 4000 * 4
@@ -36,24 +36,24 @@ class Stue:
     def fast_tid(self, skift):
 
         if skift == 1:
-            return 480 * 1.33
+            return 480 * 1.3
         elif skift == 2:
-            return 150 * 1.33
+            return 150 * 1.3
         elif skift == 3:
-            return 270 * 1.33
+            return 270 * 1.3
         elif skift == 4:
-            return 540 * 1.33
+            return 540 * 1.3
 
     def fast_tid_delt(self, skift):
 
         if skift == 1:
-            return 480 * 1.33
+            return 480 * 1.3
         elif skift == 2:
-            return 150 * 1.33
+            return 150 * 1.3
         elif skift == 3:
-            return 270 * 1.33
+            return 270 * 1.3
         elif skift == 4:
-            return 540 * 1.33
+            return 540 * 1.3
 
     def update(self, skift, value):
         if skift == 1:
@@ -68,10 +68,10 @@ class Stue:
     def reset_stue(self, hoytid=False):
 
         if not hoytid:
-            self.skift_1 = 480 * 1.33
-            self.skift_2 = 150 * 1.33
-            self.skift_3 = 270 * 1.33
-            self.skift_4 = 540 * 1.33
+            self.skift_1 = 480 * 1.3
+            self.skift_2 = 150 * 1.3
+            self.skift_3 = 270 * 1.3
+            self.skift_4 = 540 * 1.3
 
     def test_time(self,skift, value):
 
