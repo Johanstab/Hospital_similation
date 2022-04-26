@@ -2,11 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="150ebf8f-5436-41e2-8119-c978c0f093b9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Hospital_similation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Hospital_similation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/siste.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simuleringsmodell/siste.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/stue.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simuleringsmodell/stue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/Dette er filen du ikke skal bruke.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/Dette er filen du skal bruke.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/ny versjon.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/pasient.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/simulering.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/siste.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/stue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/sykehus.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/test.xls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/test2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/test23.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/testestest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/testtest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/trafikklys.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +50,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="test_4_sabina" />
+        <entry key="$PROJECT_DIR$" value="gjvvkhbulijoøøhkljvkhjg" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -300,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650869844034</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fix">
+      <created>1650894154513</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1650894154513</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,7 +367,7 @@
     <SUITE FILE_PATH="coverage/Hospital_similation$stue.coverage" NAME="stue Coverage Results" MODIFIED="1650379585806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
     <SUITE FILE_PATH="coverage/Hospital_similation$ny_versjon.coverage" NAME="ny versjon Coverage Results" MODIFIED="1650789203606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
     <SUITE FILE_PATH="coverage/Hospital_similation$testestest.coverage" NAME="testestest Coverage Results" MODIFIED="1650728570858" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
-    <SUITE FILE_PATH="coverage/Hospital_similation$siste.coverage" NAME="siste Coverage Results" MODIFIED="1650893701826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
+    <SUITE FILE_PATH="coverage/Hospital_similation$siste.coverage" NAME="siste Coverage Results" MODIFIED="1650957351167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
     <SUITE FILE_PATH="coverage/Hospital_similation$test.coverage" NAME="test Coverage Results" MODIFIED="1650438788023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
     <SUITE FILE_PATH="coverage/Hospital_similation$2.coverage" NAME="2 Coverage Results" MODIFIED="1650274776258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
     <SUITE FILE_PATH="coverage/Hospital_similation$test22.coverage" NAME="test22 Coverage Results" MODIFIED="1650383736600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Simuleringsmodell" />
