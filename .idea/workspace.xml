@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="150ebf8f-5436-41e2-8119-c978c0f093b9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/Dette er filen du ikke skal bruke.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/Dette er filen du skal bruke.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/ny versjon.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Simuleringsmodell/oppsettpasienter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Simuleringsmodell/simulering.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simuleringsmodell/simulering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/siste.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/test.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/test2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/test23.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/testestest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/testtest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/sykehus.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simuleringsmodell/trafikklys.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simuleringsmodell/trafikklys.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/try_sim.py" beforeDir="false" afterPath="$PROJECT_DIR$/try_sim.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="gjvvkhbulijoøøhkljvkhjg" />
+        <entry key="$PROJECT_DIR$" value="The_Final_Branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,6 +59,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -216,6 +209,7 @@
       <workItem from="1650799466040" duration="35000" />
       <workItem from="1650800458949" duration="8633000" />
       <workItem from="1650869760834" duration="10947000" />
+      <workItem from="1651132632285" duration="802000" />
     </task>
     <task id="LOCAL-00001" summary="Ordnet på import">
       <created>1649863721660</created>
@@ -329,7 +323,28 @@
       <option name="project" value="LOCAL" />
       <updated>1650957950032</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix">
+      <created>1651132729244</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1651132729244</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fix">
+      <created>1651132846401</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1651132846401</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix">
+      <created>1651132887414</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1651132887414</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

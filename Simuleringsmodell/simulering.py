@@ -4,12 +4,12 @@ __author__ = 'Johan Stabekk, Sabina Langås'
 __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
 import pandas as pd
-from Simuleringsmodell.sykehus import Sykehus
+from Simuleringsmodell.trafikklys import Trafikklys
 from Simuleringsmodell.stue import Stue
-from Simuleringsmodell.trafikklys import TrafikkLys
+from Simuleringsmodell.oppsettpasienter import OppsettPasienter
 
-sim = TrafikkLys()
-stue = Sykehus()
+sim = OppsettPasienter()
+stue = Trafikklys()
 pasient_liste = []
 pasient_df = pd.read_excel(
     '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/ferdigbehandletinput.xls')
