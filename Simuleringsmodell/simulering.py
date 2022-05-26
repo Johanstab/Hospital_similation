@@ -15,9 +15,9 @@ pasient_df = pd.read_excel(
     '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/ferdigbehandletinput.xls')
 pasient_df = pasient_df.reset_index()
 diagnose_df = pd.read_excel(
-    '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/DIAGNOSE.xls')
+    '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/DIAGNOSE.xls')  # Leser inn diagnoser og diagnosekoder
 elektiv = pd.read_excel(
-    '/Users/sabinal/Desktop/untitled folder 2/Elektiv tid brukt.xls')
+    '/Users/sabinal/Desktop/MASTER 2022/DATA/Python kode/ferdigbehandletinputelektiv alle.xls')  # Leser inn elektiv tiden på de ulike stuene
 elektiv = elektiv.replace(to_replace=["Dag", "Tidligkveld", "Kveld", "Natt"],
                           value=[int(1), int(2), int(3), int(4)])
 elektiv = elektiv.replace(to_replace=["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag",
@@ -48,12 +48,14 @@ if __name__ == '__main__':
     stue_andre_4 = Stue('N-10')
     stue_andre_5 = Stue('N-12')
 
-    for month in range(1, 13):
+    "Den neste biten av koden tar oss gjennom simuleringen av 1 år."
 
-        for week in range(1, 5):
+    for month in range(1, 13):  # Går gjennom måneder
 
-            for day in range(7):
-                # Resetter stuene slik at man får "ny" tid hver uke
+        for week in range(1, 5):  # Går gjennom ukene i en måned
+
+            for day in range(7):  # Går gjennom ukedagene i en uke
+                # Resetter stuene slik at man får "ny" tid hver ukedag
 
                 stue_ort_1.reset_stue()
                 stue_ort_2.reset_stue()
@@ -71,27 +73,32 @@ if __name__ == '__main__':
                 tidligkveld = []
                 kveld = []
                 natt = []
-                neste_skift = []
+                neste_skift = []  # Liste for å holde de pasientene som går over skift
+
+                # Neste bit av kode kjørere gjennom pasientne å legger de inn i riktig liste i forhold til om
+                # det er riktig skift, dag, uke, måned og sjekker at de ikke allerde har fått behandling.
 
                 for pasient in pasient_liste:
 
                     if pasient.month == month:
 
-                        if pasient.ukedag == day:
+                        if pasient.uke == week:
 
-                            if not pasient.behandlet:
+                            if pasient.ukedag == day:
 
-                                if pasient.tid == 1:
-                                    dag.append(pasient)
+                                if not pasient.behandlet:
 
-                                elif pasient.tid == 2:
-                                    tidligkveld.append(pasient)
+                                    if pasient.tid == 1:
+                                        dag.append(pasient)
 
-                                elif pasient.tid == 3:
-                                    kveld.append(pasient)
+                                    elif pasient.tid == 2:
+                                        tidligkveld.append(pasient)
 
-                                elif pasient.tid == 4:
-                                    natt.append(pasient)
+                                    elif pasient.tid == 3:
+                                        kveld.append(pasient)
+
+                                    elif pasient.tid == 4:
+                                        natt.append(pasient)
 
                 for skift_tid in [dag, tidligkveld, kveld, natt]:
 
@@ -99,49 +106,57 @@ if __name__ == '__main__':
 
                     skift_tid.extend(neste_skift)
 
-                    skift_tid.sort(key=lambda x: (x.hast_nummer, x.ventetid), reverse=True)
-
+                    skift_tid.sort(key=lambda x: (x.hast_nummer, x.ventetid),
+                                   reverse=True)  # Sorterer vi slik at den røde pasienten som ventet lengst blir tatt først
+                    # Dette er for å håndtere at noen pasienter går fra et skift til et annet.
                     neste_skift = []
+
+                    # Den neste delen av koden håndterer den elektive tiden som blir brukt på de ulike stuene.
 
                     for index, row in elektiv.iterrows():
                         if row['Måned'] == month and row['Ukedag'] == day and row[
                             'TidsIntervallStue'] == skift:
                             if row['Stue'] == 'N-01':
-                                stue_ort_1.update(skift, (row['StueTidMin'])/4)
+                                stue_ort_1.update(skift, (row['StueTidMin']) / 4)
                             elif row['Stue'] == 'N-02':
-                                stue_ort_2.update(skift, (row['StueTidMin'])/4)
+                                stue_ort_2.update(skift, (row['StueTidMin']) / 4)
                             elif row['Stue'] == 'N-03':
-                                stue_ort_3.update(skift, (row['StueTidMin'])/4)
+                                stue_ort_3.update(skift, (row['StueTidMin']) / 4)
                             elif row['Stue'] == 'N-04':
-                                stue_ort_4.update(skift, (row['StueTidMin'])/4)
+                                stue_ort_4.update(skift, (row['StueTidMin']) / 4)
                             elif row['Stue'] == 'N-05':
-                                stue_andre_1.update(skift, (row['StueTidMin'])/4)
+                                stue_andre_1.update(skift, (row['StueTidMin']) / 4)
                             elif row['Stue'] == 'N-06':
-                                stue_andre_2.update(skift, (row['StueTidMin'])/4)
+                                stue_andre_2.update(skift, (row['StueTidMin']) / 4)
                             elif row['Stue'] == 'N-07':
-                                stue_andre_3.update(skift, (row['StueTidMin'])/4)
+                                stue_andre_3.update(skift, (row['StueTidMin']) / 4)
                             elif row['Stue'] == 'N-10':
-                                stue_andre_4.update(skift, (row['StueTidMin'])/4)
+                                stue_andre_4.update(skift, (row['StueTidMin']) / 4)
                             elif row['Stue'] == 'N-12':
-                                stue_andre_5.update(skift, (row['StueTidMin'])/4)
+                                stue_andre_5.update(skift, (row['StueTidMin']) / 4)
 
-                    if month == 7 or month == 8:
+                    #Nedover fra denne linjen kommer det en del if-tester som sjekker hvilket operasjonsstue
+                    #man skal benytte seg av alt etter en rekke forskjellige kriterier
 
-                        if day == 5:
+                    if month == 7 or month == 8:#Denne håndterer redusert kapasitet om sommere.
+                                                #Da er de ikke like mange stuer som er i bruk
+                                                #på de ulike skiftene
+
+                        if day == 5: #Denne håndterer at det er forskjellig kapasitet på Lørdager. Dette gjelde både når det er sommer og ikke sommer
 
                             if skift == 1:
-                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4] #For praktiske grunner i koden skiller vi mellom en liste av ortopedi stuene og en liste for de andre
                                 liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
                                                  stue_andre_4,
                                                  stue_andre_5]
 
-                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
-                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True) #Sorterer stuene slikt at den med mest tilgengelig tid blir tatt først
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True) #Sorterer stuene slikt at den med mest tilgengelig tid blir tatt først
 
-                                liste_stuer_o = liste_stuer_o[0:2]
-                                liste_stuer_a = liste_stuer_a[0:1]
+                                liste_stuer_o = liste_stuer_o[0:2] #Velger hvor mange stuer som skal være tilgjengelig av ortopedi stuene
+                                liste_stuer_a = liste_stuer_a[0:1] #Velger hvor mange stuer som skal være tilgjengelig av de andre stuene
 
-
+                            # Alle kommentaerene ovenfor er gjeldene for all lik kode som kommer under
                             elif skift == 2:
 
                                 liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
@@ -181,7 +196,7 @@ if __name__ == '__main__':
                                 liste_stuer_o = liste_stuer_o[0:1]
                                 liste_stuer_a = liste_stuer_a[0:1]
 
-                        elif day == 6:
+                        elif day == 6:#Denne håndterer at det er forskjellig kapasitet på Søndager. Dette gjelde både når det er sommer og ikke sommer
 
                             if skift == 1:
                                 liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
@@ -288,7 +303,7 @@ if __name__ == '__main__':
                                 liste_stuer_o = liste_stuer_o[0:1]
                                 liste_stuer_a = liste_stuer_a[0:1]
 
-                    else:
+                    else: #Denne håndterer for vanlig kapasitet når det ikke er sommer og redusert
 
                         if day == 5:
 
@@ -302,7 +317,7 @@ if __name__ == '__main__':
                                 liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
 
                                 liste_stuer_o = liste_stuer_o[0:2]
-                                liste_stuer_a = liste_stuer_a[0:2]
+                                liste_stuer_a = liste_stuer_a[0:1]
 
 
                             elif skift == 2:
@@ -356,7 +371,7 @@ if __name__ == '__main__':
                                 liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
 
                                 liste_stuer_o = liste_stuer_o[0:1]
-                                liste_stuer_a = liste_stuer_a[0:2]
+                                liste_stuer_a = liste_stuer_a[0:1]
 
 
                             elif skift == 2:
@@ -401,41 +416,48 @@ if __name__ == '__main__':
 
                             if skift == 1:
                                 liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
-                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
-                                                 stue_andre_5]
-
-                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
-                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
-
-
-                            elif skift == 2:
-
-                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
-                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
                                                  stue_andre_5]
 
                                 liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
                                 liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
 
                                 liste_stuer_o = liste_stuer_o[0:4]
-                                liste_stuer_a = liste_stuer_a[0:5]
+                                liste_stuer_a = liste_stuer_a[0:4]
+
+
+                            elif skift == 2:
+
+                                liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
+                                                 stue_andre_5]
+
+                                liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
+                                liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
+
+                                liste_stuer_o = liste_stuer_o[0:3]
+                                liste_stuer_a = liste_stuer_a[0:4]
 
 
                             elif skift == 3:
                                 liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
-                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
                                                  stue_andre_5]
 
                                 liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
                                 liste_stuer_a.sort(key=lambda x: x.get_time(skift), reverse=True)
 
                                 liste_stuer_o = liste_stuer_o[0:2]
-                                liste_stuer_a = liste_stuer_a[0:4]
+                                liste_stuer_a = liste_stuer_a[0:3]
 
 
                             elif skift == 4:
                                 liste_stuer_o = [stue_ort_1, stue_ort_2, stue_ort_3, stue_ort_4]
-                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3, stue_andre_4,
+                                liste_stuer_a = [stue_andre_1, stue_andre_2, stue_andre_3,
+                                                 stue_andre_4,
                                                  stue_andre_5]
 
                                 liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
@@ -444,7 +466,9 @@ if __name__ == '__main__':
                                 liste_stuer_o = liste_stuer_o[0:1]
                                 liste_stuer_a = liste_stuer_a[0:1]
 
-                    for person in skift_tid:
+                    for person in skift_tid: #Går gjennom alle personene i et skift
+
+                        #Denne biten av koden håndterer de pasietnene som er røde og hører til på ortopedi
                         if person.fagOmrade == 'Ortopedi' and person.hast == 'Red' and person.uke == week:
                             if liste_stuer_o[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_o[0].get_time(skift)
@@ -454,7 +478,7 @@ if __name__ == '__main__':
                                 person.ventetid += stue_ort_1.fast_tid(skift) - person.inntid
                                 liste_stuer_o.sort(key=lambda x: x.get_time(skift), reverse=True)
 
-                            else:
+                            else: #Her håndteres de pasientene som ikke blir operert på det gjeldene skiftet
                                 person.ventetid += stue_ort_1.fast_tid_delt(skift)
                                 neste_skift.append(person)
 
@@ -484,6 +508,7 @@ if __name__ == '__main__':
                                                 person.month = 13
                                                 neste_year.append(person)
 
+                        # Denne biten av koden håndterer de pasietnene som er røde og hører til alle andre kategorier
                         if not person.fagOmrade == 'Ortopedi' and person.hast == 'Red' and person.uke == week:
                             if liste_stuer_a[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_a[0].get_time(skift)
@@ -522,6 +547,7 @@ if __name__ == '__main__':
                                                 person.month = 13
                                                 neste_year.append(person)
 
+                        # Denne biten av koden håndterer de pasietnene som er gul og hører til på ortopedi
                         if person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift != 4 and person.uke == week:
                             if liste_stuer_o[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_o[0].get_time(skift)
@@ -560,6 +586,7 @@ if __name__ == '__main__':
                                                 person.month = 13
                                                 neste_year.append(person)
 
+                        # Denne biten av koden håndterer de pasietnene som er gul og hører til de andre kategoriene
                         if not person.fagOmrade == 'Ortopedi' and person.hast == 'Yellow' and skift != 4 and person.uke == week:
                             if liste_stuer_a[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_a[0].get_time(skift)
@@ -659,6 +686,7 @@ if __name__ == '__main__':
                                             person.month = 13
                                             neste_year.append(person)
 
+                        # Denne biten av koden håndterer de pasietnene som er grønn og hører til på ortopedi
                         if person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift != 4 and person.uke == week:
                             if liste_stuer_o[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_o[0].get_time(skift)
@@ -697,6 +725,7 @@ if __name__ == '__main__':
                                                 person.month = 13
                                                 neste_year.append(person)
 
+                        # Denne biten av koden håndterer de pasietnene som er gul og hører til de andre kategoriene
                         if not person.fagOmrade == 'Ortopedi' and person.hast == 'Green' and skift != 4 and person.uke == week:
                             if liste_stuer_a[0].get_time(skift) - person.stuetid - 45 >= 0:
                                 person.inntid = liste_stuer_a[0].get_time(skift)
@@ -798,6 +827,6 @@ if __name__ == '__main__':
     df_2 = pd.DataFrame([vars(f) for f in neste_year])
     df_3 = pd.DataFrame([vars(f) for f in pasient_liste])
 
-    df.to_excel("ferdigbehandletoutput test.xls")
-    df_2.to_excel("nesteår test.xls")
-    df_3.to_excel('pasienter test.xls')
+    df.to_excel("alle med ny elektiv.xls")
+    df_2.to_excel("alle nestår elektiv.xls")
+    df_3.to_excel('pasienter1 test.xls')

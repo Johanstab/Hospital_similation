@@ -11,6 +11,8 @@ class Trafikklys:
 
     def fordel_trafikklys(self, pasient_liste, Diagnose_df):
 
+        "Gir de ulike pasietenen en trafikklysgradering ut fra diagnosen de har"
+
         for pasient in pasient_liste:
             for index, row in Diagnose_df.iterrows():
                 if pasient.diagnose == row['DiagnoseGruppe'] and row['Hastegrad'] == 'Rød':
@@ -30,6 +32,8 @@ class Trafikklys:
 
     def fikser_dager(self, pasient_liste):
 
+        "Konverterer string til numeriskverid da dette var lettere å håndtere senere i koden"
+
         for pasient in pasient_liste:
             if pasient.tid == 'Dag':
                 pasient.tid = 1
@@ -41,6 +45,8 @@ class Trafikklys:
                 pasient.tid = 4
 
     def legge_til_uker(self, pasient_liste):
+
+        "Denne gir pasientene i listen et tilfeldig uketall mellom 1-4"
 
         counter = 1
 

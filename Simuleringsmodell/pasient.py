@@ -6,6 +6,8 @@ __email__ = 'johan.stabekk@nmbu.no, sabina.langas@nmbu.no'
 
 class Pasient:
 
+"Oppretter pasient objektet som brukes videre i simuleringen."
+
     def __init__(self, PasientNr, Diagnose, FagOmrade, Operasjonstype, Month, Ukedag, TidOperasjon,
                  Stuetid, ErOhjelp):
         """

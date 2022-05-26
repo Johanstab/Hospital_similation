@@ -12,7 +12,7 @@ class OppsettPasienter:
     parametere = {}
 
     @classmethod
-    def sett_parametere(cls, nye_parametere):
+    def sett_parametere(cls, nye_parametere): #Denne brukes ikke i denne koden, den ble lagt inn, men ikke tatt i bruk.
 
         for parameter in nye_parametere:
             if parameter not in cls.parametere:
@@ -25,6 +25,8 @@ class OppsettPasienter:
         self.pasient_liste = []
 
     def initer_pasienter(self, pasient_df):
+
+        " Lager en liste med alle pasientene som skal opereres i simuleringen. "
 
         for index, row in pasient_df.iterrows():
             self.pasient_liste.append(Pasient(row['PasNr'], row['DiagnoseGruppe'],
